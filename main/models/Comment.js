@@ -14,6 +14,9 @@ Comment.init(
     content: {
       type: DataTypes.STRING,
     },
+    date: {
+      type: DataTypes.DATE,
+    },
     post_id: {
       type: DataTypes.INTEGER,
       references: {

@@ -1,6 +1,7 @@
 [
   {
     "content": "testing comment",
-    "post_id": 1
+    "post_id": 1,
+    "date": "3/9/2022"
   }
 ]
