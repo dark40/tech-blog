@@ -2,16 +2,12 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Get all posts
 router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
+      include: [User],
     });
 
     // Serialize data so the template can read it
@@ -27,13 +23,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+// Get one post
+router.get('/post/:id',withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
+        User,
         {
-          model: User,
-          attributes: ['username'],
+          model: Comment,
+          include: [User],
         },
       ],
     });
@@ -49,7 +47,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-
+// Login
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -60,6 +58,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Sign up
 router.get('/signup', (req, res) => {
   
   if (req.session.logged_in) {
