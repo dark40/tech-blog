@@ -1,8 +1,21 @@
 [
   {
-    "title": "testing title",
+    "title": "CSS is the best",
     "content": "testing content",
     "date": "3/9/2022",
     "user_id": 1
+  },
+  {
+    "title": "JS is the best",
+    "content": "testing content",
+    "date": "4/9/2022",
+    "user_id": 2
+  },
+  {
+    "title": "I love coding",
+    "content": "testing content",
+    "date": "8/9/2022",
+    "user_id": 3
   }
+
 ]

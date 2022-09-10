@@ -1,7 +1,12 @@
 [
   {
-    "content": "testing comment",
+    "content": "Here is my comment",
     "post_id": 1,
     "date": "3/9/2022"
+  },
+  {
+    "content": "Here is my comment too",
+    "post_id": 1,
+    "date": "5/9/2022"
   }
 ]
