@@ -17,9 +17,12 @@ Post.init(
     },
     content: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     date: {
       type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,

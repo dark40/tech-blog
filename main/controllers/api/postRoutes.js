@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
+// Create new post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -15,6 +17,28 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// Update post by id
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const editPost = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+        date: dateInput,
+      },
+      {
+        where: {
+          id: req.params.id,
+        }
+      });
+
+    res.status(200).json(editPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// Delete post by id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({

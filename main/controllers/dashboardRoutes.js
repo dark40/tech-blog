@@ -1,17 +1,16 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
-const dateInput = new Date().toLocaleDateString();
+const date = new Date();
 
+// Get all posts on dashboard
 router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-            ],
+            include: [User],
+            where: {
+                user_id: req.session.user_id,
+            }
         });
 
         // Serialize data so the template can read it
@@ -28,39 +27,25 @@ router.get('/', withAuth, async (req, res) => {
     }
 })
 
-router.post('/new', withAuth, async (req, res) => {
-    try {
-        const newPost = await Post.create({
-            title: req.body.title,
-            content: req.body.content,
-            date: dateInput,
-            user_id: req.session.user_id,
-        });
+// Get the new post handlebar
+router.get('/new', withAuth, (req, res) => {
+    res.render('newPost');
+  });
 
-        res.status(200).json(newPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+// Get the edit post handlebar
+router.get('/edit/:id', withAuth, async (req, res) => {
+try {
+    const postData = await Post.findByPk(req.params.id, {
+        include: [User]
+    })
 
-router.put('/edit/:id', withAuth, async (req, res) => {
-    try {
-        const post = await Post.update(
-            {
-                title: req.body.title,
-                content: req.body.content,
-                date: dateInput,
-            },
-            {
-                where: {
-                    id: req.params.id,
-                }
-            });
+    const posts = postData.get({ plain: true});
 
-        res.status(200).json(post);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+    res.render('editPost', posts);
+
+} catch (err) {
+    res.status(500).json(err);
+}
+  });
 
 module.exports = router;

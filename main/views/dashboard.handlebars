@@ -1,10 +1,14 @@
-{{#each}}
-{{#if posts.user_id = user.id}}
 <div>
-  <a href="/edit/{{post.id}}">{{post.title}}</a>
-  <p>{{format_date post.date}}</p>
+  {{#each posts as |post|}}
+  {{!-- {{#if post.user_id = user.id}} --}}
+  <div>
+    <a href="dashboard/edit/{{post.id}}">{{post.title}}</a>
+    <p>{{format_date post.date}}</p>
+  </div>
+  {{!-- {{/if}} --}}
+  {{/each}}
 </div>
-{{/if}}
-{{/each}}
 
-<script src="./js/profile.js"></script>
+<footer>
+  <a href="/dashboard/new">➕ New Post</a>
+</footer>
