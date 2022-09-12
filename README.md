@@ -2,7 +2,7 @@
 
 ## Description
 
-This isa a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
+This is a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
 
 ## Deployment
 [Heroku](https://dry-basin-10920.herokuapp.com/)
