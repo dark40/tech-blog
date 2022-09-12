@@ -1,7 +1,7 @@
-<div>
+<div class="container">
   {{#each posts as |post|}}
   {{!-- {{#if post.user_id = user.id}} --}}
-  <div>
+  <div class="row banner space">
     <a href="dashboard/edit/{{post.id}}">{{post.title}}</a>
     <p>{{format_date post.date}}</p>
   </div>

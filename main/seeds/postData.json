@@ -1,19 +1,19 @@
 [
   {
     "title": "CSS is the best",
-    "content": "testing content",
+    "content": "testing content 123",
     "date": "3/9/2022",
     "user_id": 1
   },
   {
     "title": "JS is the best",
-    "content": "testing content",
+    "content": "testing content 345",
     "date": "4/9/2022",
     "user_id": 2
   },
   {
     "title": "I love coding",
-    "content": "testing content",
+    "content": "testing content 5768",
     "date": "8/9/2022",
     "user_id": 3
   }

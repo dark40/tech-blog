@@ -39,11 +39,6 @@ a {
   margin-top: 10px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-}
-
 form {
   border: 3px solid var(--dark-brown);
   border-radius: 2px;;
@@ -73,4 +68,82 @@ form button {
 form a {
   background-color: var(--light-green);
   color: var(--dark-brown);
+}
+
+.container {
+  display: block;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.banner {
+  background-color: var(--dark-brown);
+  color: white;
+  padding: 3px;
+  min-height: 20px;
+}
+
+.banner a,p {
+  background-color: var(--dark-brown);
+  color: white;
+  margin: 0 0;
+}
+
+.banner a {
+  text-align: left;
+  margin: none;
+}
+
+.banner p {
+  text-align: right;
+  margin: none;
+}
+
+.content-box {
+  color: var(--dark-brown);
+  background-color: var(--light-green);
+  border: 2px solid var(--dark-brown);
+  padding: 3px;
+}
+
+.content-box p {
+  color: var(--dark-brown);
+  background-color: var(--light-green);
+}
+
+footer {
+  color: white;
+  background-color: var(--dark-brown);
+  position: absolute;
+  left:40%;
+  right:40%;
+  bottom: 0;
+  text-align: center;
+  min-height: 40px;
+  padding: 5px;
+}
+
+.space {
+  margin: 10px; 
+}
+
+.comment-box {
+  display: block;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-form {
+  width: 100%;
+  margin-left: 40Px;
+  margin-right: 0;
 }
