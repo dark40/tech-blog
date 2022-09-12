@@ -30,22 +30,22 @@ router.get('/', withAuth, async (req, res) => {
 // Get the new post handlebar
 router.get('/new', withAuth, (req, res) => {
     res.render('newPost');
-  });
+});
 
 // Get the edit post handlebar
 router.get('/edit/:id', withAuth, async (req, res) => {
-try {
-    const postData = await Post.findByPk(req.params.id, {
-        include: [User]
-    })
+    try {
+        const postData = await Post.findByPk(req.params.id)
 
-    const posts = postData.get({ plain: true});
+        const posts = postData.get({ plain: true });
 
-    res.render('editPost', posts);
+        res.render('editPost', {
+            posts,
+        });
 
-} catch (err) {
-    res.status(500).json(err);
-}
-  });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

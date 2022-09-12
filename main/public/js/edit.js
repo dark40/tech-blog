@@ -1,15 +1,15 @@
-const post_id = document.querySelector('input[name="post')
+const post_id = document.querySelector('input[name="post-id"]').value;
 
 // Edit the post
 const editFormHandler = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#post-title').value.trim();
-    const content = document.querySelector('#post-content').value.trim();
+    const title = document.querySelector('#post-title').value
+    const content = document.querySelector('#post-content').value
 
 
     if (title && content) {
-        const response = await fetch(`/api/edit/${post_id}`, {
+        const response = await fetch(`/api/posts/${post_id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: {
@@ -31,7 +31,7 @@ const editFormHandler = async (event) => {
 const delButtonHandler = async (event) => {
     event.preventDefault();
 
-   await fetch(`/api/projects/${id}`, {
+   await fetch(`/api/posts/${post_id}`, {
     method: 'DELETE',
    }) 
 
@@ -39,7 +39,7 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('#edit-post-form')
+    .querySelector('#update-btn')
     .addEventListener('click', editFormHandler);
 document
     .querySelector('#delete-btn')
