@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
-      where: { user_id: req.params.id },
+      where: { id: req.params.id },
       include: [
         User,
         {
